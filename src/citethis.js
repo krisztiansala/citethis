@@ -104,12 +104,11 @@ const citethis = {
     },
     bibtex: function (data) {
       data.bibID = citethis.generateBibTexID(data);
-      if (data.author) {
-        return `@article\{${data.bibID},\n\tauthor\t={$author},\n\ttitle\t={$title},\n\tyear\t={$year},\n\turl\t={$url}\n\t\}`;
+      const today = new Date().toISOString().slice(0,10);
+      if (!data.author) {
+        data.author = ""
       }
-      else {
-        throw new Error("Source lacks all required BibTex data: author, year");
-      }
+      return `@article\{${data.bibID},\n\tauthor\t={$author},\n\ttitle\t={$title},\n\tyear\t={$year},\n\turldate\t={${today}},\n\turl\t={$url}\n\t\}`;
     },
     wikipedia: function (data) {
       var base = '<ref>{{cite web |url=$url |title=$title ';
