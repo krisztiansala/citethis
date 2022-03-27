@@ -14,13 +14,21 @@
     "default_title" : "CiteThis!",
     "default_panel": "sidebar/panel.html"
   },
+  "browser_action": {
+    "default_icon": "icons/citethis.png",
+    "default_title": "CiteThis"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
 
   "permissions": ["activeTab", "tabs", "<all_urls>"],
 
   "commands": {
     "_execute_sidebar_action": {
       "suggested_key": {
-        "default": "Ctrl+Shift+Y"
+        "default": "Ctrl+Shift+Y",
+        "linux": "Ctrl+Alt+C"
       }
     }
   }
